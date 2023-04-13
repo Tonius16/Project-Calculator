@@ -1,0 +1,74 @@
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@font-face {
+  font-family: "digitalclock";
+  src: url(./Font/digital-7.ttf);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: black solid;
+  width: 55vh;
+  height: 70vh;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: black solid;
+  text-align: end;
+  width: 500px;
+  height: 100px;
+  margin-top: 30px;
+  font-size: 55px;
+  font-family: "digitalclock";
+}
+
+.btnDiv {
+  height: 100vh;
+  margin-top: -20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+.rowOne,
+.rowTwo,
+.rowThree,
+.rowFour {
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+}
+
+.btnSeven,
+.btnEight,
+.btnNine,
+.btnDivide,
+.btnFour,
+.btnFive,
+.btnSix,
+.btnMultiply,
+.btnOne,
+.btnTwo,
+.btnThree,
+.btnSubtract,
+.btnClear,
+.btnZero,
+.btnEquals,
+.btnAdd {
+  font-size: 50px;
+  border-radius: 30px;
+  width: 60px;
+  height: 60px;
+}
