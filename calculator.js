@@ -25,25 +25,21 @@ let c = "";
 function add(a, b) {
   c = a + b;
   a = c;
-  console.log(a);
 }
 
 function subtract(a, b) {
   c = a - b;
   a = c;
-  console.log(a);
 }
 
 function multiply(a, b) {
   c = a * b;
   a = c;
-  console.log(a);
 }
 
 function divide(a, b) {
   c = a / b;
   a = c;
-  console.log(a);
 }
 
 if (a === "") {
@@ -66,7 +62,7 @@ function operate(oper, a, b) {
   }
 }
 
-btnSeven.addEventListener("click", () => {
+function eraseResult() {
   if (display.textContent == Number(c)) {
     a = "";
     oper = "";
@@ -74,6 +70,9 @@ btnSeven.addEventListener("click", () => {
     c = "";
     display.textContent = "";
   }
+}
+
+function ifDivideByZero() {
   if (c === Infinity) {
     a = "";
     oper = "";
@@ -81,6 +80,38 @@ btnSeven.addEventListener("click", () => {
     c = "";
     display.textContent = "";
   }
+}
+
+function orderOfOperation() {
+  if (
+    display.textContent === "/" ||
+    display.textContent === "-" ||
+    display.textContent === "+" ||
+    display.textContent === "*"
+  ) {
+    display.textContent = "";
+  }
+}
+
+function disableBtns() {
+  btnDivide.disabled = false;
+  btnAdd.disabled = false;
+  btnSubtract.disabled = false;
+  btnMultiply.disabled = false;
+  if (b != "") {
+    btnDot.disabled = false;
+  }
+}
+
+function ifInfinity() {
+  if (c === Infinity) {
+    display.textContent = "No can do baby doll";
+  }
+}
+
+btnSeven.addEventListener("click", () => {
+  eraseResult();
+  ifDivideByZero();
   if (oper === "") {
     a += "7";
   } else if (c != "" || c === 0) {
@@ -93,40 +124,14 @@ btnSeven.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "7";
   }
-  if (
-    display.textContent === "/" ||
-    display.textContent === "-" ||
-    display.textContent === "+" ||
-    display.textContent === "*"
-  ) {
-    display.textContent = "";
-  }
-  btnDivide.disabled = false;
-  btnAdd.disabled = false;
-  btnSubtract.disabled = false;
-  btnMultiply.disabled = false;
-  if (b != "" && btnDot.disabled === true) {
-    btnDot.disabled = false;
-  }
+  orderOfOperation();
+  disableBtns();
   display.textContent += 7;
-  console.log(a, b);
 });
 
 btnEight.addEventListener("click", () => {
-  if (display.textContent == Number(c)) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
-  if (c === Infinity) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
+  eraseResult();
+  ifDivideByZero();
   if (oper === "") {
     a += "8";
   } else if (c != "" || c === 0) {
@@ -139,40 +144,14 @@ btnEight.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "8";
   }
-  if (
-    display.textContent === "/" ||
-    display.textContent === "-" ||
-    display.textContent === "+" ||
-    display.textContent === "*"
-  ) {
-    display.textContent = "";
-  }
-  btnDivide.disabled = false;
-  btnAdd.disabled = false;
-  btnSubtract.disabled = false;
-  btnMultiply.disabled = false;
-  if (b != "") {
-    btnDot.disabled = false;
-  }
+  orderOfOperation();
+  disableBtns();
   display.textContent += 8;
-  console.log(a, b);
 });
 
 btnNine.addEventListener("click", () => {
-  if (display.textContent == Number(c)) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
-  if (c === Infinity) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
+  eraseResult();
+  ifDivideByZero();
   if (oper === "") {
     a += "9";
   } else if (c != "" || c === 0) {
@@ -185,23 +164,9 @@ btnNine.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "9";
   }
-  if (
-    display.textContent === "/" ||
-    display.textContent === "-" ||
-    display.textContent === "+" ||
-    display.textContent === "*"
-  ) {
-    display.textContent = "";
-  }
-  btnDivide.disabled = false;
-  btnAdd.disabled = false;
-  btnSubtract.disabled = false;
-  btnMultiply.disabled = false;
-  if (b != "") {
-    btnDot.disabled = false;
-  }
+  orderOfOperation();
+  disableBtns();
   display.textContent += 9;
-  console.log(a, b);
 });
 
 btnDivide.addEventListener("click", () => {
@@ -211,27 +176,12 @@ btnDivide.addEventListener("click", () => {
   oper = "/";
   display.textContent = c;
   display.textContent += "/";
-  if (c === Infinity) {
-    display.textContent = "No can do baby doll";
-  }
-  console.log(oper);
+  ifInfinity();
 });
 
 btnFour.addEventListener("click", () => {
-  if (display.textContent == Number(c)) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
-  if (c === Infinity) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
+  eraseResult();
+  ifDivideByZero();
   if (oper === "") {
     a += "4";
   } else if (c != "" || c === 0) {
@@ -244,40 +194,14 @@ btnFour.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "4";
   }
-  if (
-    display.textContent === "/" ||
-    display.textContent === "-" ||
-    display.textContent === "+" ||
-    display.textContent === "*"
-  ) {
-    display.textContent = "";
-  }
-  btnDivide.disabled = false;
-  btnAdd.disabled = false;
-  btnSubtract.disabled = false;
-  btnMultiply.disabled = false;
-  if (b != "") {
-    btnDot.disabled = false;
-  }
+  orderOfOperation();
+  disableBtns();
   display.textContent += 4;
-  console.log(a, b);
 });
 
 btnFive.addEventListener("click", () => {
-  if (display.textContent == Number(c)) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
-  if (c === Infinity) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
+  eraseResult();
+  ifDivideByZero();
   if (oper === "") {
     a += "5";
   } else if (c != "" || c === 0) {
@@ -290,40 +214,14 @@ btnFive.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "5";
   }
-  if (
-    display.textContent === "/" ||
-    display.textContent === "-" ||
-    display.textContent === "+" ||
-    display.textContent === "*"
-  ) {
-    display.textContent = "";
-  }
-  btnDivide.disabled = false;
-  btnAdd.disabled = false;
-  btnSubtract.disabled = false;
-  btnMultiply.disabled = false;
-  if (b != "") {
-    btnDot.disabled = false;
-  }
+  orderOfOperation();
+  disableBtns();
   display.textContent += 5;
-  console.log(a, b);
 });
 
 btnSix.addEventListener("click", () => {
-  if (display.textContent == Number(c)) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
-  if (c === Infinity) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
+  eraseResult();
+  ifDivideByZero();
   if (oper === "" || c === 0) {
     a += "6";
   } else if (c != "") {
@@ -336,23 +234,9 @@ btnSix.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "6";
   }
-  if (
-    display.textContent === "/" ||
-    display.textContent === "-" ||
-    display.textContent === "+" ||
-    display.textContent === "*"
-  ) {
-    display.textContent = "";
-  }
-  btnDivide.disabled = false;
-  btnAdd.disabled = false;
-  btnSubtract.disabled = false;
-  btnMultiply.disabled = false;
-  if (b != "") {
-    btnDot.disabled = false;
-  }
+  orderOfOperation();
+  disableBtns();
   display.textContent += 6;
-  console.log(a, b);
 });
 
 btnMultiply.addEventListener("click", () => {
@@ -362,27 +246,12 @@ btnMultiply.addEventListener("click", () => {
   oper = "*";
   display.textContent = c;
   display.textContent += "*";
-  if (c === Infinity) {
-    display.textContent = "No can do baby doll";
-  }
-  console.log(oper);
+  ifInfinity();
 });
 
 btnOne.addEventListener("click", () => {
-  if (display.textContent == Number(c)) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
-  if (c === Infinity) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
+  eraseResult();
+  ifDivideByZero();
   if (oper === "") {
     a += "1";
   } else if (c != "" || c === 0) {
@@ -395,40 +264,14 @@ btnOne.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "1";
   }
-  if (
-    display.textContent === "/" ||
-    display.textContent === "-" ||
-    display.textContent === "+" ||
-    display.textContent === "*"
-  ) {
-    display.textContent = "";
-  }
-  btnDivide.disabled = false;
-  btnAdd.disabled = false;
-  btnSubtract.disabled = false;
-  btnMultiply.disabled = false;
-  if (b != "") {
-    btnDot.disabled = false;
-  }
+  orderOfOperation();
+  disableBtns();
   display.textContent += 1;
-  console.log(a, b);
 });
 
 btnTwo.addEventListener("click", () => {
-  if (display.textContent == Number(c)) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
-  if (c === Infinity) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
+  eraseResult();
+  ifDivideByZero();
   if (oper === "") {
     a += "2";
   } else if (c != "" || c === 0) {
@@ -441,40 +284,14 @@ btnTwo.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "2";
   }
-  if (
-    display.textContent === "/" ||
-    display.textContent === "-" ||
-    display.textContent === "+" ||
-    display.textContent === "*"
-  ) {
-    display.textContent = "";
-  }
-  btnDivide.disabled = false;
-  btnAdd.disabled = false;
-  btnSubtract.disabled = false;
-  btnMultiply.disabled = false;
-  if (b != "") {
-    btnDot.disabled = false;
-  }
+  orderOfOperation();
+  disableBtns();
   display.textContent += 2;
-  console.log(a, b);
 });
 
 btnThree.addEventListener("click", () => {
-  if (display.textContent == Number(c)) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
-  if (c === Infinity) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
+  eraseResult();
+  ifDivideByZero();
   if (oper === "") {
     a += "3";
   } else if (c != "" || c === 0) {
@@ -487,23 +304,9 @@ btnThree.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "3";
   }
-  if (
-    display.textContent === "/" ||
-    display.textContent === "-" ||
-    display.textContent === "+" ||
-    display.textContent === "*"
-  ) {
-    display.textContent = "";
-  }
-  btnDivide.disabled = false;
-  btnAdd.disabled = false;
-  btnSubtract.disabled = false;
-  btnMultiply.disabled = false;
-  if (b != "") {
-    btnDot.disabled = false;
-  }
+  orderOfOperation();
+  disableBtns();
   display.textContent += 3;
-  console.log(a, b);
 });
 
 btnSubtract.addEventListener("click", () => {
@@ -513,10 +316,7 @@ btnSubtract.addEventListener("click", () => {
   oper = "-";
   display.textContent = c;
   display.textContent += "-";
-  if (c === Infinity) {
-    display.textContent = "No can do baby doll";
-  }
-  console.log(oper);
+  ifInfinity();
 });
 
 btnClear.addEventListener("click", () => {
@@ -528,20 +328,8 @@ btnClear.addEventListener("click", () => {
 });
 
 btnZero.addEventListener("click", () => {
-  if (display.textContent == Number(c)) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
-  if (c === Infinity) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-    display.textContent = "";
-  }
+  eraseResult();
+  ifDivideByZero();
   if (oper === "") {
     a += "0";
   } else if (c != "" || c === 0) {
@@ -555,23 +343,9 @@ btnZero.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "0";
   }
-  if (
-    display.textContent === "/" ||
-    display.textContent === "-" ||
-    display.textContent === "+" ||
-    display.textContent === "*"
-  ) {
-    display.textContent = "";
-  }
-  btnDivide.disabled = false;
-  btnAdd.disabled = false;
-  btnSubtract.disabled = false;
-  btnMultiply.disabled = false;
-  if (b != "") {
-    btnDot.disabled = false;
-  }
+  orderOfOperation();
+  disableBtns();
   display.textContent += 0;
-  console.log(a, b);
 });
 
 btnEquals.addEventListener("click", () => {
@@ -581,12 +355,7 @@ btnEquals.addEventListener("click", () => {
   btnSubtract.disabled = true;
   btnMultiply.disabled = true;
   display.textContent = c;
-  if (c === Infinity) {
-    display.textContent = "No can do baby doll";
-  }
-  if (c === NaN) {
-    display.textContent = "What did you do buddy?";
-  }
+  ifInfinity();
 });
 
 btnAdd.addEventListener("click", () => {
@@ -596,7 +365,7 @@ btnAdd.addEventListener("click", () => {
   oper = "+";
   display.textContent = c;
   display.textContent += "+";
-  console.log(oper);
+  ifInfinity();
 });
 
 btnDot.addEventListener("click", () => {
