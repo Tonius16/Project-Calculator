@@ -15,8 +15,12 @@ const btnClear = document.getElementById("btnClear");
 const btnZero = document.getElementById("btnZero");
 const btnEquals = document.getElementById("btnEquals");
 const btnAdd = document.getElementById("btnAdd");
+const btnDot = document.getElementById("btnDot");
 
-//na klik druge radnje nakon sta je b nula a dilimo s njin izbaci ne
+let a = "";
+let oper = "";
+let b = "";
+let c = "";
 
 function add(a, b) {
   c = a + b;
@@ -26,7 +30,7 @@ function add(a, b) {
 
 function subtract(a, b) {
   c = a - b;
-  a = +c;
+  a = c;
   console.log(a);
 }
 
@@ -42,21 +46,15 @@ function divide(a, b) {
   console.log(a);
 }
 
-let a = "";
-let oper = "";
-let b = "";
-let c = "";
-let d = "";
-
 if (a === "") {
   btnDivide.disabled = true;
+  btnAdd.disabled = true;
+  btnSubtract.disabled = true;
+  btnMultiply.disabled = true;
 }
 
 function operate(oper, a, b) {
-  if (oper === "/" && b === "0") {
-    display.textContent = "LOL";
-    console.log(display.textContent);
-  } else if (oper === "/") {
+  if (oper === "/") {
     divide(+a, +b);
   }
   if (oper === "*") {
@@ -69,6 +67,20 @@ function operate(oper, a, b) {
 }
 
 btnSeven.addEventListener("click", () => {
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
+  if (c === Infinity) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
   if (oper === "") {
     a += "7";
   } else if (c != "" || c === 0) {
@@ -77,11 +89,6 @@ btnSeven.addEventListener("click", () => {
   if (a === c) {
     b = "";
     c = "";
-  }
-  if (display.textContent === c) {
-    c = "";
-    display.textContent = "";
-    console.log(":asd");
   }
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "7";
@@ -95,11 +102,31 @@ btnSeven.addEventListener("click", () => {
     display.textContent = "";
   }
   btnDivide.disabled = false;
+  btnAdd.disabled = false;
+  btnSubtract.disabled = false;
+  btnMultiply.disabled = false;
+  if (b != "" && btnDot.disabled === true) {
+    btnDot.disabled = false;
+  }
   display.textContent += 7;
   console.log(a, b);
 });
 
 btnEight.addEventListener("click", () => {
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
+  if (c === Infinity) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
   if (oper === "") {
     a += "8";
   } else if (c != "" || c === 0) {
@@ -120,11 +147,32 @@ btnEight.addEventListener("click", () => {
   ) {
     display.textContent = "";
   }
+  btnDivide.disabled = false;
+  btnAdd.disabled = false;
+  btnSubtract.disabled = false;
+  btnMultiply.disabled = false;
+  if (b != "") {
+    btnDot.disabled = false;
+  }
   display.textContent += 8;
   console.log(a, b);
 });
 
 btnNine.addEventListener("click", () => {
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
+  if (c === Infinity) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
   if (oper === "") {
     a += "9";
   } else if (c != "" || c === 0) {
@@ -145,8 +193,15 @@ btnNine.addEventListener("click", () => {
   ) {
     display.textContent = "";
   }
+  btnDivide.disabled = false;
+  btnAdd.disabled = false;
+  btnSubtract.disabled = false;
+  btnMultiply.disabled = false;
+  if (b != "") {
+    btnDot.disabled = false;
+  }
   display.textContent += 9;
-  console.log(a, b, d);
+  console.log(a, b);
 });
 
 btnDivide.addEventListener("click", () => {
@@ -154,11 +209,29 @@ btnDivide.addEventListener("click", () => {
     operate(oper, a, b);
   }
   oper = "/";
-  display.textContent = "/";
+  display.textContent = c;
+  display.textContent += "/";
+  if (c === Infinity) {
+    display.textContent = "No can do baby doll";
+  }
   console.log(oper);
 });
 
 btnFour.addEventListener("click", () => {
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
+  if (c === Infinity) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
   if (oper === "") {
     a += "4";
   } else if (c != "" || c === 0) {
@@ -179,11 +252,32 @@ btnFour.addEventListener("click", () => {
   ) {
     display.textContent = "";
   }
+  btnDivide.disabled = false;
+  btnAdd.disabled = false;
+  btnSubtract.disabled = false;
+  btnMultiply.disabled = false;
+  if (b != "") {
+    btnDot.disabled = false;
+  }
   display.textContent += 4;
-  console.log(a, b, d);
+  console.log(a, b);
 });
 
 btnFive.addEventListener("click", () => {
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
+  if (c === Infinity) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
   if (oper === "") {
     a += "5";
   } else if (c != "" || c === 0) {
@@ -204,11 +298,32 @@ btnFive.addEventListener("click", () => {
   ) {
     display.textContent = "";
   }
+  btnDivide.disabled = false;
+  btnAdd.disabled = false;
+  btnSubtract.disabled = false;
+  btnMultiply.disabled = false;
+  if (b != "") {
+    btnDot.disabled = false;
+  }
   display.textContent += 5;
-  console.log(a, b, d);
+  console.log(a, b);
 });
 
 btnSix.addEventListener("click", () => {
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
+  if (c === Infinity) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
   if (oper === "" || c === 0) {
     a += "6";
   } else if (c != "") {
@@ -229,20 +344,45 @@ btnSix.addEventListener("click", () => {
   ) {
     display.textContent = "";
   }
+  btnDivide.disabled = false;
+  btnAdd.disabled = false;
+  btnSubtract.disabled = false;
+  btnMultiply.disabled = false;
+  if (b != "") {
+    btnDot.disabled = false;
+  }
   display.textContent += 6;
-  console.log(a, b, d);
+  console.log(a, b);
 });
 
 btnMultiply.addEventListener("click", () => {
-  if ((+a != "" && +b != "") || +a === 0 || +b === 0) {
+  if ((+a != "" && +b != "") || a === 0 || +b === 0) {
     operate(oper, a, b);
   }
   oper = "*";
-  display.textContent = "*";
+  display.textContent = c;
+  display.textContent += "*";
+  if (c === Infinity) {
+    display.textContent = "No can do baby doll";
+  }
   console.log(oper);
 });
 
 btnOne.addEventListener("click", () => {
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
+  if (c === Infinity) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
   if (oper === "") {
     a += "1";
   } else if (c != "" || c === 0) {
@@ -263,11 +403,32 @@ btnOne.addEventListener("click", () => {
   ) {
     display.textContent = "";
   }
+  btnDivide.disabled = false;
+  btnAdd.disabled = false;
+  btnSubtract.disabled = false;
+  btnMultiply.disabled = false;
+  if (b != "") {
+    btnDot.disabled = false;
+  }
   display.textContent += 1;
-  console.log(a, b, d);
+  console.log(a, b);
 });
 
 btnTwo.addEventListener("click", () => {
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
+  if (c === Infinity) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
   if (oper === "") {
     a += "2";
   } else if (c != "" || c === 0) {
@@ -288,11 +449,32 @@ btnTwo.addEventListener("click", () => {
   ) {
     display.textContent = "";
   }
+  btnDivide.disabled = false;
+  btnAdd.disabled = false;
+  btnSubtract.disabled = false;
+  btnMultiply.disabled = false;
+  if (b != "") {
+    btnDot.disabled = false;
+  }
   display.textContent += 2;
-  console.log(a, b, d);
+  console.log(a, b);
 });
 
 btnThree.addEventListener("click", () => {
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
+  if (c === Infinity) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
   if (oper === "") {
     a += "3";
   } else if (c != "" || c === 0) {
@@ -313,16 +495,27 @@ btnThree.addEventListener("click", () => {
   ) {
     display.textContent = "";
   }
+  btnDivide.disabled = false;
+  btnAdd.disabled = false;
+  btnSubtract.disabled = false;
+  btnMultiply.disabled = false;
+  if (b != "") {
+    btnDot.disabled = false;
+  }
   display.textContent += 3;
-  console.log(a, b, d);
+  console.log(a, b);
 });
 
 btnSubtract.addEventListener("click", () => {
-  if ((+a != "" && +b != "") || +a === 0 || +b === 0) {
+  if ((+a != "" && +b != "") || a === 0 || +b === 0) {
     operate(oper, a, b);
   }
   oper = "-";
-  display.textContent = "-";
+  display.textContent = c;
+  display.textContent += "-";
+  if (c === Infinity) {
+    display.textContent = "No can do baby doll";
+  }
   console.log(oper);
 });
 
@@ -332,10 +525,23 @@ btnClear.addEventListener("click", () => {
   oper = "";
   c = "";
   display.textContent = "";
-  console.log(a, b, c);
 });
 
 btnZero.addEventListener("click", () => {
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
+  if (c === Infinity) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
   if (oper === "") {
     a += "0";
   } else if (c != "" || c === 0) {
@@ -357,17 +563,30 @@ btnZero.addEventListener("click", () => {
   ) {
     display.textContent = "";
   }
+  btnDivide.disabled = false;
+  btnAdd.disabled = false;
+  btnSubtract.disabled = false;
+  btnMultiply.disabled = false;
+  if (b != "") {
+    btnDot.disabled = false;
+  }
   display.textContent += 0;
-  console.log(a, b, d);
+  console.log(a, b);
 });
 
 btnEquals.addEventListener("click", () => {
   operate(oper, a, b);
-  a = "";
-  oper = "";
-  b = "";
-  c = "";
+  btnDivide.disabled = true;
+  btnAdd.disabled = true;
+  btnSubtract.disabled = true;
+  btnMultiply.disabled = true;
   display.textContent = c;
+  if (c === Infinity) {
+    display.textContent = "No can do baby doll";
+  }
+  if (c === NaN) {
+    display.textContent = "What did you do buddy?";
+  }
 });
 
 btnAdd.addEventListener("click", () => {
@@ -375,6 +594,18 @@ btnAdd.addEventListener("click", () => {
     operate(oper, a, b);
   }
   oper = "+";
-  display.textContent = "+";
+  display.textContent = c;
+  display.textContent += "+";
   console.log(oper);
+});
+
+btnDot.addEventListener("click", () => {
+  if (oper === "") {
+    a += ".";
+  }
+  if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+    b += ".";
+  }
+  btnDot.disabled = true;
+  display.textContent += ".";
 });
