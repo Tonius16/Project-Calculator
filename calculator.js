@@ -48,10 +48,18 @@ let b = "";
 let c = "";
 let d = "";
 
+if (a === "") {
+  btnDivide.disabled = true;
+}
+
 function operate(oper, a, b) {
-  if (oper === "/") {
+  if (oper === "/" && b === "0") {
+    display.textContent = "LOL";
+    console.log(display.textContent);
+  } else if (oper === "/") {
     divide(+a, +b);
-  } else if (oper === "*") {
+  }
+  if (oper === "*") {
     multiply(+a, +b);
   } else if (oper === "-") {
     subtract(+a, +b);
@@ -66,16 +74,27 @@ btnSeven.addEventListener("click", () => {
   } else if (c != "" || c === 0) {
     a = c;
   }
-
   if (a === c) {
     b = "";
     c = "";
   }
-
+  if (display.textContent === c) {
+    c = "";
+    display.textContent = "";
+    console.log(":asd");
+  }
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "7";
   }
-
+  if (
+    display.textContent === "/" ||
+    display.textContent === "-" ||
+    display.textContent === "+" ||
+    display.textContent === "*"
+  ) {
+    display.textContent = "";
+  }
+  btnDivide.disabled = false;
   display.textContent += 7;
   console.log(a, b);
 });
@@ -93,8 +112,16 @@ btnEight.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "8";
   }
-  console.log(a, b);
+  if (
+    display.textContent === "/" ||
+    display.textContent === "-" ||
+    display.textContent === "+" ||
+    display.textContent === "*"
+  ) {
+    display.textContent = "";
+  }
   display.textContent += 8;
+  console.log(a, b);
 });
 
 btnNine.addEventListener("click", () => {
@@ -110,19 +137,24 @@ btnNine.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "9";
   }
-  console.log(a, b, d);
+  if (
+    display.textContent === "/" ||
+    display.textContent === "-" ||
+    display.textContent === "+" ||
+    display.textContent === "*"
+  ) {
+    display.textContent = "";
+  }
   display.textContent += 9;
+  console.log(a, b, d);
 });
 
 btnDivide.addEventListener("click", () => {
-  if ((+a != "" && +b != "") || a === 0) {
+  if ((+a != "" && +b != "") || a === 0 || b === "0") {
     operate(oper, a, b);
   }
   oper = "/";
   display.textContent = "/";
-  if (b === "0") {
-    display.textContent = "LOL";
-  }
   console.log(oper);
 });
 
@@ -139,8 +171,16 @@ btnFour.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "4";
   }
-  console.log(a, b, d);
+  if (
+    display.textContent === "/" ||
+    display.textContent === "-" ||
+    display.textContent === "+" ||
+    display.textContent === "*"
+  ) {
+    display.textContent = "";
+  }
   display.textContent += 4;
+  console.log(a, b, d);
 });
 
 btnFive.addEventListener("click", () => {
@@ -156,8 +196,16 @@ btnFive.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "5";
   }
-  console.log(a, b, d);
+  if (
+    display.textContent === "/" ||
+    display.textContent === "-" ||
+    display.textContent === "+" ||
+    display.textContent === "*"
+  ) {
+    display.textContent = "";
+  }
   display.textContent += 5;
+  console.log(a, b, d);
 });
 
 btnSix.addEventListener("click", () => {
@@ -173,8 +221,16 @@ btnSix.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "6";
   }
-  console.log(a, b, d);
+  if (
+    display.textContent === "/" ||
+    display.textContent === "-" ||
+    display.textContent === "+" ||
+    display.textContent === "*"
+  ) {
+    display.textContent = "";
+  }
   display.textContent += 6;
+  console.log(a, b, d);
 });
 
 btnMultiply.addEventListener("click", () => {
@@ -199,8 +255,16 @@ btnOne.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "1";
   }
-  console.log(a, b, d);
+  if (
+    display.textContent === "/" ||
+    display.textContent === "-" ||
+    display.textContent === "+" ||
+    display.textContent === "*"
+  ) {
+    display.textContent = "";
+  }
   display.textContent += 1;
+  console.log(a, b, d);
 });
 
 btnTwo.addEventListener("click", () => {
@@ -216,8 +280,16 @@ btnTwo.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "2";
   }
-  console.log(a, b, d);
+  if (
+    display.textContent === "/" ||
+    display.textContent === "-" ||
+    display.textContent === "+" ||
+    display.textContent === "*"
+  ) {
+    display.textContent = "";
+  }
   display.textContent += 2;
+  console.log(a, b, d);
 });
 
 btnThree.addEventListener("click", () => {
@@ -233,8 +305,16 @@ btnThree.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "3";
   }
-  console.log(a, b, d);
+  if (
+    display.textContent === "/" ||
+    display.textContent === "-" ||
+    display.textContent === "+" ||
+    display.textContent === "*"
+  ) {
+    display.textContent = "";
+  }
   display.textContent += 3;
+  console.log(a, b, d);
 });
 
 btnSubtract.addEventListener("click", () => {
@@ -246,7 +326,14 @@ btnSubtract.addEventListener("click", () => {
   console.log(oper);
 });
 
-btnClear.addEventListener("click", () => {});
+btnClear.addEventListener("click", () => {
+  a = "";
+  b = "";
+  oper = "";
+  c = "";
+  display.textContent = "";
+  console.log(a, b, c);
+});
 
 btnZero.addEventListener("click", () => {
   if (oper === "") {
@@ -262,11 +349,26 @@ btnZero.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "0";
   }
-  console.log(a, b, d);
+  if (
+    display.textContent === "/" ||
+    display.textContent === "-" ||
+    display.textContent === "+" ||
+    display.textContent === "*"
+  ) {
+    display.textContent = "";
+  }
   display.textContent += 0;
+  console.log(a, b, d);
 });
 
-btnEquals.addEventListener("click", () => {});
+btnEquals.addEventListener("click", () => {
+  operate(oper, a, b);
+  a = "";
+  oper = "";
+  b = "";
+  c = "";
+  display.textContent = c;
+});
 
 btnAdd.addEventListener("click", () => {
   if ((+a != "" && +b != "") || a === 0 || +b === 0) {
