@@ -16,6 +16,7 @@ const btnZero = document.getElementById("btnZero");
 const btnEquals = document.getElementById("btnEquals");
 const btnAdd = document.getElementById("btnAdd");
 const btnDot = document.getElementById("btnDot");
+const btnErase = document.getElementById("btnErase");
 
 let a = "";
 let oper = "";
@@ -42,12 +43,18 @@ function divide(a, b) {
   a = c;
 }
 
-if (a === "") {
+function disableBtns() {
   btnDivide.disabled = true;
   btnAdd.disabled = true;
   btnSubtract.disabled = true;
   btnMultiply.disabled = true;
+  btnDot.disabled = true;
 }
+
+btnErase.disabled = true;
+btnEquals.disabled = true;
+
+disableBtns();
 
 function operate(oper, a, b) {
   if (oper === "/") {
@@ -63,11 +70,7 @@ function operate(oper, a, b) {
 }
 
 function eraseResult() {
-  if (display.textContent == Number(c)) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
+  if (a === "" && oper === "" && b === "" && c === "") {
     display.textContent = "";
   }
 }
@@ -93,13 +96,26 @@ function orderOfOperation() {
   }
 }
 
-function disableBtns() {
+function enableBtns() {
   btnDivide.disabled = false;
   btnAdd.disabled = false;
   btnSubtract.disabled = false;
   btnMultiply.disabled = false;
+  btnErase.disabled = false;
+  btnDot.disabled = false;
+  btnEquals.disabled = false;
+  for (let i = 0; i < a.length; i++) {
+    if (a.charAt(i) === ".") {
+      btnDot.disabled = true;
+    }
+  }
   if (b != "") {
     btnDot.disabled = false;
+  }
+  for (let i = 0; i < b.length; i++) {
+    if (b.charAt(i) === ".") {
+      btnDot.disabled = true;
+    }
   }
 }
 
@@ -108,6 +124,8 @@ function ifInfinity() {
     display.textContent = "No can do baby doll";
   }
 }
+
+display.textContent = "0";
 
 btnSeven.addEventListener("click", () => {
   eraseResult();
@@ -125,7 +143,7 @@ btnSeven.addEventListener("click", () => {
     b += "7";
   }
   orderOfOperation();
-  disableBtns();
+  enableBtns();
   display.textContent += 7;
 });
 
@@ -145,7 +163,7 @@ btnEight.addEventListener("click", () => {
     b += "8";
   }
   orderOfOperation();
-  disableBtns();
+  enableBtns();
   display.textContent += 8;
 });
 
@@ -165,7 +183,7 @@ btnNine.addEventListener("click", () => {
     b += "9";
   }
   orderOfOperation();
-  disableBtns();
+  enableBtns();
   display.textContent += 9;
 });
 
@@ -177,6 +195,9 @@ btnDivide.addEventListener("click", () => {
   display.textContent = c;
   display.textContent += "/";
   ifInfinity();
+  disableBtns();
+  btnEquals.disabled = true;
+  btnErase.disabled = true;
 });
 
 btnFour.addEventListener("click", () => {
@@ -195,7 +216,7 @@ btnFour.addEventListener("click", () => {
     b += "4";
   }
   orderOfOperation();
-  disableBtns();
+  enableBtns();
   display.textContent += 4;
 });
 
@@ -215,7 +236,7 @@ btnFive.addEventListener("click", () => {
     b += "5";
   }
   orderOfOperation();
-  disableBtns();
+  enableBtns();
   display.textContent += 5;
 });
 
@@ -235,7 +256,7 @@ btnSix.addEventListener("click", () => {
     b += "6";
   }
   orderOfOperation();
-  disableBtns();
+  enableBtns();
   display.textContent += 6;
 });
 
@@ -247,6 +268,9 @@ btnMultiply.addEventListener("click", () => {
   display.textContent = c;
   display.textContent += "*";
   ifInfinity();
+  disableBtns();
+  btnEquals.disabled = true;
+  btnErase.disabled = true;
 });
 
 btnOne.addEventListener("click", () => {
@@ -265,7 +289,7 @@ btnOne.addEventListener("click", () => {
     b += "1";
   }
   orderOfOperation();
-  disableBtns();
+  enableBtns();
   display.textContent += 1;
 });
 
@@ -285,7 +309,7 @@ btnTwo.addEventListener("click", () => {
     b += "2";
   }
   orderOfOperation();
-  disableBtns();
+  enableBtns();
   display.textContent += 2;
 });
 
@@ -305,8 +329,9 @@ btnThree.addEventListener("click", () => {
     b += "3";
   }
   orderOfOperation();
-  disableBtns();
+  enableBtns();
   display.textContent += 3;
+  console.log(a, b);
 });
 
 btnSubtract.addEventListener("click", () => {
@@ -317,6 +342,9 @@ btnSubtract.addEventListener("click", () => {
   display.textContent = c;
   display.textContent += "-";
   ifInfinity();
+  disableBtns();
+  btnEquals.disabled = true;
+  btnErase.disabled = true;
 });
 
 btnClear.addEventListener("click", () => {
@@ -324,7 +352,8 @@ btnClear.addEventListener("click", () => {
   b = "";
   oper = "";
   c = "";
-  display.textContent = "";
+  btnErase.disabled = false;
+  display.textContent = "0";
 });
 
 btnZero.addEventListener("click", () => {
@@ -339,23 +368,31 @@ btnZero.addEventListener("click", () => {
     b = "";
     c = "";
   }
-
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += "0";
   }
   orderOfOperation();
-  disableBtns();
-  display.textContent += 0;
+  enableBtns();
+  if (display.textContent === "0") {
+    display.textContent = "0";
+  } else {
+    display.textContent += "0";
+  }
 });
 
 btnEquals.addEventListener("click", () => {
   operate(oper, a, b);
-  btnDivide.disabled = true;
-  btnAdd.disabled = true;
-  btnSubtract.disabled = true;
-  btnMultiply.disabled = true;
+  disableBtns();
+  btnErase.disabled = true;
   display.textContent = c;
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+  }
   ifInfinity();
+  btnEquals.disabled = true;
 });
 
 btnAdd.addEventListener("click", () => {
@@ -366,6 +403,9 @@ btnAdd.addEventListener("click", () => {
   display.textContent = c;
   display.textContent += "+";
   ifInfinity();
+  disableBtns();
+  btnEquals.disabled = true;
+  btnErase.disabled = true;
 });
 
 btnDot.addEventListener("click", () => {
@@ -375,6 +415,46 @@ btnDot.addEventListener("click", () => {
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
     b += ".";
   }
-  btnDot.disabled = true;
+  for (let i = 0; i < a.length; i++) {
+    if (a.charAt(i) === ".") {
+      btnDot.disabled = true;
+    }
+  }
+  for (let i = 0; i < b.length; i++) {
+    if (b.charAt(i) === ".") {
+      btnDot.disabled = true;
+    }
+  }
   display.textContent += ".";
+});
+
+btnErase.addEventListener("click", () => {
+  if (b === "" && a != "") {
+    oper = oper.substring(0, oper.length - 1);
+    display.textContent = oper;
+  }
+  if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+    if (b != "") {
+      b = b.substring(0, b.length - 1);
+      display.textContent = display.textContent.substring(
+        0,
+        display.textContent.length - 1
+      );
+    }
+    if (b === "") {
+      display.textContent = oper;
+    }
+  }
+  if (oper === "") {
+    display.textContent = a;
+    a = a.substring(0, a.length - 1);
+    display.textContent = display.textContent.substring(
+      0,
+      display.textContent.length - 1
+    );
+    if (a === "") {
+      display.textContent = "0";
+    }
+  }
+  console.log(a, oper, b, c);
 });
