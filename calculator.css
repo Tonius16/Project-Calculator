@@ -4,6 +4,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(rgb(248, 205, 205), rgb(250, 250, 204));
 }
 
 @font-face {
@@ -15,10 +16,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: black solid;
   height: 50vh;
   width: 40vh;
-  padding-top: 3vh;
+  border-radius: 2.5vh;
+  padding-top: 2vh;
+  background-image: linear-gradient(rgb(221, 208, 252), rgb(175, 245, 179));
+  box-shadow: 1vh 0.5vh 0.5vh #c5bfbf9f, -1vh -0.5vh 0.5vh #d8c8c89f;
+  border: solid rgba(194, 171, 171, 0.993);
 }
 
 .display {
@@ -26,7 +30,6 @@ body {
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  border: black solid;
   text-align: end;
   width: 35vh;
   height: 6vh;
@@ -37,6 +40,8 @@ body {
   display: block;
   line-height: 3.1vh;
   font-family: "digitalclock";
+  background-image: linear-gradient(rgb(221, 208, 252), rgb(179, 167, 162));
+  border: solid rgba(116, 90, 90, 0.212);
 }
 
 .btnDiv {
@@ -46,6 +51,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.rowOne {
+  border-top: solid rgba(184, 169, 169, 0.158);
 }
 
 .btnSeven,
@@ -66,8 +75,56 @@ body {
 .btnAdd,
 .btnDot,
 .btnErase {
-  margin: 0.3vh;
+  background-color: #f0f8ff00;
+  border: none;
+  margin: -0.3vh;
   font-size: 4vh;
-  width: 8vh;
+  width: 9.8vh;
   height: 8vh;
+  box-shadow: 0.1vh 0.1vh 0.3vh #0000000c, -0.1vh 0.3vh #0000000c;
+  padding: 0vh;
+}
+
+.btnClear,
+.btnErase {
+  background-color: #f0f8ff00;
+  margin: -0.3vh;
+  font-size: 4vh;
+  width: 19.4vh;
+  height: 8vh;
+  margin-bottom: 0.4vh;
+}
+
+.btnErase {
+  text-align: right;
+  padding-right: 2vh;
+  font-size: 3.7vh;
+}
+
+button:disabled {
+  background-color: #f0f8ff00;
+  color: black;
+}
+
+button:hover {
+  background-color: #ffffff00;
+  color: rgba(31, 145, 50, 0.651);
+  transition-duration: 0.3s;
+}
+
+button:active {
+  background-color: #3e8e4100;
+  box-shadow: 0.1vh 0.1vh 0.3vh #00000005;
+  transition-duration: 1ms;
+  transform: translateY(1px);
+}
+
+.btnClear:hover {
+  background-color: #ffffff00;
+  color: rgba(255, 0, 0, 0.651);
+}
+
+.btnErase:hover {
+  background-color: #ffffff00;
+  color: rgba(158, 123, 9, 0.493);
 }

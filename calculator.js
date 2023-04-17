@@ -1,3 +1,4 @@
+const body = document.getElementById("body");
 const display = document.getElementById("display");
 const btnSeven = document.getElementById("btnSeven");
 const btnEight = document.getElementById("btnEight");
@@ -458,3 +459,284 @@ btnErase.addEventListener("click", () => {
   }
   console.log(a, oper, b, c);
 });
+
+body.addEventListener(
+  "keydown",
+  (event) => {
+    let name = event.key;
+    let code = event.code;
+    if (code === "Numpad7") {
+      eraseResult();
+      ifDivideByZero();
+      if (oper === "") {
+        a += "7";
+      } else if (c != "" || c === 0) {
+        a = c;
+      }
+      if (a === c) {
+        b = "";
+        c = "";
+      }
+      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+        b += "7";
+      }
+      orderOfOperation();
+      enableBtns();
+      display.textContent += 7;
+    }
+    if (code === "Numpad8") {
+      eraseResult();
+      ifDivideByZero();
+      if (oper === "") {
+        a += "8";
+      } else if (c != "" || c === 0) {
+        a = c;
+      }
+      if (a === c) {
+        b = "";
+        c = "";
+      }
+      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+        b += "8";
+      }
+      orderOfOperation();
+      enableBtns();
+      display.textContent += 8;
+    }
+    if (code === "Numpad9") {
+      eraseResult();
+      ifDivideByZero();
+      if (oper === "") {
+        a += "9";
+      } else if (c != "" || c === 0) {
+        a = c;
+      }
+      if (a === c) {
+        b = "";
+        c = "";
+      }
+      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+        b += "9";
+      }
+      orderOfOperation();
+      enableBtns();
+      display.textContent += 9;
+    }
+    if (code === "Numpad4") {
+      eraseResult();
+      ifDivideByZero();
+      if (oper === "") {
+        a += "4";
+      } else if (c != "" || c === 0) {
+        a = c;
+      }
+      if (a === c) {
+        b = "";
+        c = "";
+      }
+      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+        b += "4";
+      }
+      orderOfOperation();
+      enableBtns();
+      display.textContent += 4;
+    }
+    if (code === "Numpad5") {
+      eraseResult();
+      ifDivideByZero();
+      if (oper === "") {
+        a += "5";
+      } else if (c != "" || c === 0) {
+        a = c;
+      }
+      if (a === c) {
+        b = "";
+        c = "";
+      }
+      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+        b += "5";
+      }
+      orderOfOperation();
+      enableBtns();
+      display.textContent += 5;
+    }
+    if (code === "Numpad6") {
+      eraseResult();
+      ifDivideByZero();
+      if (oper === "") {
+        a += "6";
+      } else if (c != "" || c === 0) {
+        a = c;
+      }
+      if (a === c) {
+        b = "";
+        c = "";
+      }
+      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+        b += "6";
+      }
+      orderOfOperation();
+      enableBtns();
+      display.textContent += 6;
+    }
+    if (code === "Numpad1") {
+      eraseResult();
+      ifDivideByZero();
+      if (oper === "") {
+        a += "1";
+      } else if (c != "" || c === 0) {
+        a = c;
+      }
+      if (a === c) {
+        b = "";
+        c = "";
+      }
+      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+        b += "1";
+      }
+      orderOfOperation();
+      enableBtns();
+      display.textContent += 1;
+    }
+    if (code === "Numpad2") {
+      eraseResult();
+      ifDivideByZero();
+      if (oper === "") {
+        a += "2";
+      } else if (c != "" || c === 0) {
+        a = c;
+      }
+      if (a === c) {
+        b = "";
+        c = "";
+      }
+      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+        b += "2";
+      }
+      orderOfOperation();
+      enableBtns();
+      display.textContent += 2;
+    }
+    if (code === "Numpad3") {
+      eraseResult();
+      ifDivideByZero();
+      if (oper === "") {
+        a += "3";
+      } else if (c != "" || c === 0) {
+        a = c;
+      }
+      if (a === c) {
+        b = "";
+        c = "";
+      }
+      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+        b += "3";
+      }
+      orderOfOperation();
+      enableBtns();
+      display.textContent += 3;
+    }
+    if (code === "Numpad0") {
+      eraseResult();
+      ifDivideByZero();
+      if (oper === "") {
+        a += "0";
+      } else if (c != "" || c === 0) {
+        a = c;
+      }
+      if (a === c) {
+        b = "";
+        c = "";
+      }
+      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+        b += "0";
+      }
+      orderOfOperation();
+      enableBtns();
+      display.textContent += 0;
+    }
+    if (code === "NumpadDivide") {
+      if ((+a != "" && +b != "") || a === 0 || b === "0") {
+        operate(oper, a, b);
+      }
+      oper = "/";
+      display.textContent = c;
+      display.textContent += "/";
+      ifInfinity();
+      disableBtns();
+      btnEquals.disabled = true;
+      btnErase.disabled = true;
+    }
+    if (code === "NumpadMultiply") {
+      if ((+a != "" && +b != "") || a === 0 || +b === 0) {
+        operate(oper, a, b);
+      }
+      oper = "*";
+      display.textContent = c;
+      display.textContent += "*";
+      ifInfinity();
+      disableBtns();
+      btnEquals.disabled = true;
+      btnErase.disabled = true;
+    }
+    if (code === "NumpadSubtract") {
+      if ((+a != "" && +b != "") || a === 0 || +b === 0) {
+        operate(oper, a, b);
+      }
+      oper = "-";
+      display.textContent = c;
+      display.textContent += "-";
+      ifInfinity();
+      disableBtns();
+      btnEquals.disabled = true;
+      btnErase.disabled = true;
+    }
+    if (code === "NumpadAdd") {
+      if ((+a != "" && +b != "") || a === 0 || +b === 0) {
+        operate(oper, a, b);
+      }
+      oper = "+";
+      display.textContent = c;
+      display.textContent += "+";
+      ifInfinity();
+      disableBtns();
+      btnEquals.disabled = true;
+      btnErase.disabled = true;
+    }
+    if (code === "NumpadEnter") {
+      operate(oper, a, b);
+      disableBtns();
+      btnErase.disabled = true;
+      display.textContent = c;
+      if (display.textContent == Number(c)) {
+        a = "";
+        oper = "";
+        b = "";
+        c = "";
+      }
+      ifInfinity();
+      btnEquals.disabled = true;
+    }
+    if (code === "NumpadDecimal") {
+      if (oper === "") {
+        a += ".";
+      }
+      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
+        b += ".";
+      }
+      for (let i = 0; i < a.length; i++) {
+        if (a.charAt(i) === ".") {
+          btnDot.disabled = true;
+        }
+      }
+      for (let i = 0; i < b.length; i++) {
+        if (b.charAt(i) === ".") {
+          btnDot.disabled = true;
+        }
+      }
+      display.textContent += ".";
+    }
+    console.log(`Key pressed ${name} Key code value: ${code}`);
+  },
+  false
+);
