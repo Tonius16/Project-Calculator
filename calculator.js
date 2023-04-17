@@ -243,9 +243,9 @@ btnFive.addEventListener("click", () => {
 btnSix.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
-  if (oper === "" || c === 0) {
+  if (oper === "") {
     a += "6";
-  } else if (c != "") {
+  } else if (c != "" || c === 0) {
     a = c;
   }
   if (a === c) {

@@ -1,8 +1,9 @@
 body {
-  height: 100vh;
+  height: 98.3vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 @font-face {
@@ -15,8 +16,9 @@ body {
   flex-direction: column;
   align-items: center;
   border: black solid;
-  width: 55vh;
-  height: 70vh;
+  height: 50vh;
+  width: 40vh;
+  padding-top: 3vh;
 }
 
 .display {
@@ -26,37 +28,24 @@ body {
   flex-wrap: wrap;
   border: black solid;
   text-align: end;
-  width: 500px;
-  height: 100px;
-  margin-top: 30px;
-  font-size: 3em;
+  width: 35vh;
+  height: 6vh;
+  font-size: 4.5vh;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
   display: block;
-  line-height: 1em;
-  max-height: 2em;
+  line-height: 3.1vh;
   font-family: "digitalclock";
 }
 
 .btnDiv {
-  height: 100vh;
-  margin-top: -20px;
+  height: 60vh;
+  width: 40vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.rowOne,
-.rowTwo,
-.rowThree,
-.rowFour {
-  display: flex;
-  flex-direction: row;
-}
-
-.rowFour {
 }
 
 .btnSeven,
@@ -77,8 +66,8 @@ body {
 .btnAdd,
 .btnDot,
 .btnErase {
-  font-size: 50px;
-  border-radius: 30px;
-  width: 60px;
-  height: 60px;
+  margin: 0.3vh;
+  font-size: 4vh;
+  width: 8vh;
+  height: 8vh;
 }
