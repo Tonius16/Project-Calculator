@@ -125,12 +125,22 @@ function ifInfinity() {
     display.textContent = "No can do baby doll";
   }
 }
+function emptyAfterEquals() {
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+    display.textContent = "";
+  }
+}
 
 display.textContent = "0";
 
 btnSeven.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
+  emptyAfterEquals();
   if (oper === "") {
     a += "7";
   } else if (c != "" || c === 0) {
@@ -151,6 +161,7 @@ btnSeven.addEventListener("click", () => {
 btnEight.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
+  emptyAfterEquals();
   if (oper === "") {
     a += "8";
   } else if (c != "" || c === 0) {
@@ -171,6 +182,7 @@ btnEight.addEventListener("click", () => {
 btnNine.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
+  emptyAfterEquals();
   if (oper === "") {
     a += "9";
   } else if (c != "" || c === 0) {
@@ -204,6 +216,7 @@ btnDivide.addEventListener("click", () => {
 btnFour.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
+  emptyAfterEquals();
   if (oper === "") {
     a += "4";
   } else if (c != "" || c === 0) {
@@ -224,6 +237,7 @@ btnFour.addEventListener("click", () => {
 btnFive.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
+  emptyAfterEquals();
   if (oper === "") {
     a += "5";
   } else if (c != "" || c === 0) {
@@ -244,6 +258,7 @@ btnFive.addEventListener("click", () => {
 btnSix.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
+  emptyAfterEquals();
   if (oper === "") {
     a += "6";
   } else if (c != "" || c === 0) {
@@ -277,6 +292,7 @@ btnMultiply.addEventListener("click", () => {
 btnOne.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
+  emptyAfterEquals();
   if (oper === "") {
     a += "1";
   } else if (c != "" || c === 0) {
@@ -297,6 +313,7 @@ btnOne.addEventListener("click", () => {
 btnTwo.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
+  emptyAfterEquals();
   if (oper === "") {
     a += "2";
   } else if (c != "" || c === 0) {
@@ -317,6 +334,7 @@ btnTwo.addEventListener("click", () => {
 btnThree.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
+  emptyAfterEquals();
   if (oper === "") {
     a += "3";
   } else if (c != "" || c === 0) {
@@ -331,6 +349,12 @@ btnThree.addEventListener("click", () => {
   }
   orderOfOperation();
   enableBtns();
+  if (display.textContent == Number(c)) {
+    a = "";
+    oper = "";
+    b = "";
+    c = "";
+  }
   display.textContent += 3;
   console.log(a, b);
 });
@@ -360,6 +384,7 @@ btnClear.addEventListener("click", () => {
 btnZero.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
+  emptyAfterEquals();
   if (oper === "") {
     a += "0";
   } else if (c != "" || c === 0) {
@@ -374,6 +399,7 @@ btnZero.addEventListener("click", () => {
   }
   orderOfOperation();
   enableBtns();
+
   if (display.textContent === "0") {
     display.textContent = "0";
   } else {
@@ -383,17 +409,16 @@ btnZero.addEventListener("click", () => {
 
 btnEquals.addEventListener("click", () => {
   operate(oper, a, b);
-  disableBtns();
   btnErase.disabled = true;
   display.textContent = c;
   if (display.textContent == Number(c)) {
     a = "";
     oper = "";
     b = "";
-    c = "";
   }
   ifInfinity();
   btnEquals.disabled = true;
+  console.log(a, b, oper, c);
 });
 
 btnAdd.addEventListener("click", () => {
@@ -468,6 +493,7 @@ body.addEventListener(
     if (code === "Numpad7") {
       eraseResult();
       ifDivideByZero();
+      emptyAfterEquals();
       if (oper === "") {
         a += "7";
       } else if (c != "" || c === 0) {
@@ -487,6 +513,7 @@ body.addEventListener(
     if (code === "Numpad8") {
       eraseResult();
       ifDivideByZero();
+      emptyAfterEquals();
       if (oper === "") {
         a += "8";
       } else if (c != "" || c === 0) {
@@ -506,6 +533,7 @@ body.addEventListener(
     if (code === "Numpad9") {
       eraseResult();
       ifDivideByZero();
+      emptyAfterEquals();
       if (oper === "") {
         a += "9";
       } else if (c != "" || c === 0) {
@@ -525,6 +553,7 @@ body.addEventListener(
     if (code === "Numpad4") {
       eraseResult();
       ifDivideByZero();
+      emptyAfterEquals();
       if (oper === "") {
         a += "4";
       } else if (c != "" || c === 0) {
@@ -544,6 +573,7 @@ body.addEventListener(
     if (code === "Numpad5") {
       eraseResult();
       ifDivideByZero();
+      emptyAfterEquals();
       if (oper === "") {
         a += "5";
       } else if (c != "" || c === 0) {
@@ -563,6 +593,7 @@ body.addEventListener(
     if (code === "Numpad6") {
       eraseResult();
       ifDivideByZero();
+      emptyAfterEquals();
       if (oper === "") {
         a += "6";
       } else if (c != "" || c === 0) {
@@ -582,6 +613,7 @@ body.addEventListener(
     if (code === "Numpad1") {
       eraseResult();
       ifDivideByZero();
+      emptyAfterEquals();
       if (oper === "") {
         a += "1";
       } else if (c != "" || c === 0) {
@@ -601,6 +633,7 @@ body.addEventListener(
     if (code === "Numpad2") {
       eraseResult();
       ifDivideByZero();
+      emptyAfterEquals();
       if (oper === "") {
         a += "2";
       } else if (c != "" || c === 0) {
@@ -620,6 +653,7 @@ body.addEventListener(
     if (code === "Numpad3") {
       eraseResult();
       ifDivideByZero();
+      emptyAfterEquals();
       if (oper === "") {
         a += "3";
       } else if (c != "" || c === 0) {
@@ -639,6 +673,7 @@ body.addEventListener(
     if (code === "Numpad0") {
       eraseResult();
       ifDivideByZero();
+      emptyAfterEquals();
       if (oper === "") {
         a += "0";
       } else if (c != "" || c === 0) {
