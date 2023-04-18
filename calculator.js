@@ -135,14 +135,9 @@ function emptyAfterEquals() {
   }
 }
 
-display.textContent = "0";
-
-btnSeven.addEventListener("click", () => {
-  eraseResult();
-  ifDivideByZero();
-  emptyAfterEquals();
+function onBtnClick(prvi, drugi) {
   if (oper === "") {
-    a += "7";
+    a += prvi;
   } else if (c != "" || c === 0) {
     a = c;
   }
@@ -151,8 +146,18 @@ btnSeven.addEventListener("click", () => {
     c = "";
   }
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-    b += "7";
+    b += drugi;
   }
+  console.log(a, oper, b, c);
+}
+
+display.textContent = "0";
+
+btnSeven.addEventListener("click", () => {
+  eraseResult();
+  ifDivideByZero();
+  emptyAfterEquals();
+  onBtnClick("7", "7");
   orderOfOperation();
   enableBtns();
   display.textContent += 7;
@@ -162,18 +167,7 @@ btnEight.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
   emptyAfterEquals();
-  if (oper === "") {
-    a += "8";
-  } else if (c != "" || c === 0) {
-    a = c;
-  }
-  if (a === c) {
-    b = "";
-    c = "";
-  }
-  if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-    b += "8";
-  }
+  onBtnClick("8", "8");
   orderOfOperation();
   enableBtns();
   display.textContent += 8;
@@ -183,18 +177,7 @@ btnNine.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
   emptyAfterEquals();
-  if (oper === "") {
-    a += "9";
-  } else if (c != "" || c === 0) {
-    a = c;
-  }
-  if (a === c) {
-    b = "";
-    c = "";
-  }
-  if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-    b += "9";
-  }
+  onBtnClick("9", "9");
   orderOfOperation();
   enableBtns();
   display.textContent += 9;
@@ -217,18 +200,7 @@ btnFour.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
   emptyAfterEquals();
-  if (oper === "") {
-    a += "4";
-  } else if (c != "" || c === 0) {
-    a = c;
-  }
-  if (a === c) {
-    b = "";
-    c = "";
-  }
-  if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-    b += "4";
-  }
+  onBtnClick("4", "4");
   orderOfOperation();
   enableBtns();
   display.textContent += 4;
@@ -238,18 +210,7 @@ btnFive.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
   emptyAfterEquals();
-  if (oper === "") {
-    a += "5";
-  } else if (c != "" || c === 0) {
-    a = c;
-  }
-  if (a === c) {
-    b = "";
-    c = "";
-  }
-  if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-    b += "5";
-  }
+  onBtnClick("5", "5");
   orderOfOperation();
   enableBtns();
   display.textContent += 5;
@@ -259,18 +220,7 @@ btnSix.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
   emptyAfterEquals();
-  if (oper === "") {
-    a += "6";
-  } else if (c != "" || c === 0) {
-    a = c;
-  }
-  if (a === c) {
-    b = "";
-    c = "";
-  }
-  if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-    b += "6";
-  }
+  onBtnClick("6", "6");
   orderOfOperation();
   enableBtns();
   display.textContent += 6;
@@ -293,18 +243,7 @@ btnOne.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
   emptyAfterEquals();
-  if (oper === "") {
-    a += "1";
-  } else if (c != "" || c === 0) {
-    a = c;
-  }
-  if (a === c) {
-    b = "";
-    c = "";
-  }
-  if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-    b += "1";
-  }
+  onBtnClick("1", "1");
   orderOfOperation();
   enableBtns();
   display.textContent += 1;
@@ -314,18 +253,7 @@ btnTwo.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
   emptyAfterEquals();
-  if (oper === "") {
-    a += "2";
-  } else if (c != "" || c === 0) {
-    a = c;
-  }
-  if (a === c) {
-    b = "";
-    c = "";
-  }
-  if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-    b += "2";
-  }
+  onBtnClick("2", "2");
   orderOfOperation();
   enableBtns();
   display.textContent += 2;
@@ -335,28 +263,10 @@ btnThree.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
   emptyAfterEquals();
-  if (oper === "") {
-    a += "3";
-  } else if (c != "" || c === 0) {
-    a = c;
-  }
-  if (a === c) {
-    b = "";
-    c = "";
-  }
-  if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-    b += "3";
-  }
+  onBtnClick("3", "3");
   orderOfOperation();
   enableBtns();
-  if (display.textContent == Number(c)) {
-    a = "";
-    oper = "";
-    b = "";
-    c = "";
-  }
   display.textContent += 3;
-  console.log(a, b);
 });
 
 btnSubtract.addEventListener("click", () => {
@@ -385,18 +295,7 @@ btnZero.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
   emptyAfterEquals();
-  if (oper === "") {
-    a += "0";
-  } else if (c != "" || c === 0) {
-    a = c;
-  }
-  if (a === c) {
-    b = "";
-    c = "";
-  }
-  if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-    b += "0";
-  }
+  onBtnClick("0", "0");
   orderOfOperation();
   enableBtns();
 
@@ -418,7 +317,6 @@ btnEquals.addEventListener("click", () => {
   }
   ifInfinity();
   btnEquals.disabled = true;
-  console.log(a, b, oper, c);
 });
 
 btnAdd.addEventListener("click", () => {
@@ -482,7 +380,6 @@ btnErase.addEventListener("click", () => {
       display.textContent = "0";
     }
   }
-  console.log(a, oper, b, c);
 });
 
 body.addEventListener(
@@ -494,18 +391,7 @@ body.addEventListener(
       eraseResult();
       ifDivideByZero();
       emptyAfterEquals();
-      if (oper === "") {
-        a += "7";
-      } else if (c != "" || c === 0) {
-        a = c;
-      }
-      if (a === c) {
-        b = "";
-        c = "";
-      }
-      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-        b += "7";
-      }
+      onBtnClick("7", "7");
       orderOfOperation();
       enableBtns();
       display.textContent += 7;
@@ -514,18 +400,7 @@ body.addEventListener(
       eraseResult();
       ifDivideByZero();
       emptyAfterEquals();
-      if (oper === "") {
-        a += "8";
-      } else if (c != "" || c === 0) {
-        a = c;
-      }
-      if (a === c) {
-        b = "";
-        c = "";
-      }
-      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-        b += "8";
-      }
+      onBtnClick("8", "8");
       orderOfOperation();
       enableBtns();
       display.textContent += 8;
@@ -534,18 +409,7 @@ body.addEventListener(
       eraseResult();
       ifDivideByZero();
       emptyAfterEquals();
-      if (oper === "") {
-        a += "9";
-      } else if (c != "" || c === 0) {
-        a = c;
-      }
-      if (a === c) {
-        b = "";
-        c = "";
-      }
-      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-        b += "9";
-      }
+      onBtnClick("9", "9");
       orderOfOperation();
       enableBtns();
       display.textContent += 9;
@@ -554,18 +418,7 @@ body.addEventListener(
       eraseResult();
       ifDivideByZero();
       emptyAfterEquals();
-      if (oper === "") {
-        a += "4";
-      } else if (c != "" || c === 0) {
-        a = c;
-      }
-      if (a === c) {
-        b = "";
-        c = "";
-      }
-      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-        b += "4";
-      }
+      onBtnClick("4", "4");
       orderOfOperation();
       enableBtns();
       display.textContent += 4;
@@ -574,18 +427,7 @@ body.addEventListener(
       eraseResult();
       ifDivideByZero();
       emptyAfterEquals();
-      if (oper === "") {
-        a += "5";
-      } else if (c != "" || c === 0) {
-        a = c;
-      }
-      if (a === c) {
-        b = "";
-        c = "";
-      }
-      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-        b += "5";
-      }
+      onBtnClick("5", "5");
       orderOfOperation();
       enableBtns();
       display.textContent += 5;
@@ -594,18 +436,7 @@ body.addEventListener(
       eraseResult();
       ifDivideByZero();
       emptyAfterEquals();
-      if (oper === "") {
-        a += "6";
-      } else if (c != "" || c === 0) {
-        a = c;
-      }
-      if (a === c) {
-        b = "";
-        c = "";
-      }
-      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-        b += "6";
-      }
+      onBtnClick("6", "6");
       orderOfOperation();
       enableBtns();
       display.textContent += 6;
@@ -614,18 +445,7 @@ body.addEventListener(
       eraseResult();
       ifDivideByZero();
       emptyAfterEquals();
-      if (oper === "") {
-        a += "1";
-      } else if (c != "" || c === 0) {
-        a = c;
-      }
-      if (a === c) {
-        b = "";
-        c = "";
-      }
-      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-        b += "1";
-      }
+      onBtnClick("1", "1");
       orderOfOperation();
       enableBtns();
       display.textContent += 1;
@@ -634,18 +454,7 @@ body.addEventListener(
       eraseResult();
       ifDivideByZero();
       emptyAfterEquals();
-      if (oper === "") {
-        a += "2";
-      } else if (c != "" || c === 0) {
-        a = c;
-      }
-      if (a === c) {
-        b = "";
-        c = "";
-      }
-      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-        b += "2";
-      }
+      onBtnClick("2", "2");
       orderOfOperation();
       enableBtns();
       display.textContent += 2;
@@ -654,18 +463,7 @@ body.addEventListener(
       eraseResult();
       ifDivideByZero();
       emptyAfterEquals();
-      if (oper === "") {
-        a += "3";
-      } else if (c != "" || c === 0) {
-        a = c;
-      }
-      if (a === c) {
-        b = "";
-        c = "";
-      }
-      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-        b += "3";
-      }
+      onBtnClick("3", "3");
       orderOfOperation();
       enableBtns();
       display.textContent += 3;
@@ -674,18 +472,7 @@ body.addEventListener(
       eraseResult();
       ifDivideByZero();
       emptyAfterEquals();
-      if (oper === "") {
-        a += "0";
-      } else if (c != "" || c === 0) {
-        a = c;
-      }
-      if (a === c) {
-        b = "";
-        c = "";
-      }
-      if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-        b += "0";
-      }
+      onBtnClick("0", "0");
       orderOfOperation();
       enableBtns();
       display.textContent += 0;
@@ -771,7 +558,6 @@ body.addEventListener(
       }
       display.textContent += ".";
     }
-    console.log(`Key pressed ${name} Key code value: ${code}`);
   },
   false
 );
