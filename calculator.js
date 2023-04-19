@@ -133,7 +133,7 @@ function enableBtns() {
 //displaying a message if dividing by zero
 function ifInfinity() {
   if (c === Infinity) {
-    display.textContent = "No can do baby doll";
+    display.textContent = "No can dosville";
   }
 }
 
