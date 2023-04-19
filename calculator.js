@@ -1,3 +1,4 @@
+//fetching all required html elements
 const body = document.getElementById("body");
 const display = document.getElementById("display");
 const btnSeven = document.getElementById("btnSeven");
@@ -19,11 +20,13 @@ const btnAdd = document.getElementById("btnAdd");
 const btnDot = document.getElementById("btnDot");
 const btnErase = document.getElementById("btnErase");
 
+//setting four empty string variables to use in the operations
 let a = "";
 let oper = "";
 let b = "";
 let c = "";
 
+//creating functions for all four basic operations
 function add(a, b) {
   c = a + b;
   a = c;
@@ -44,6 +47,7 @@ function divide(a, b) {
   a = c;
 }
 
+//function that disables some buttons when needed
 function disableBtns() {
   btnDivide.disabled = true;
   btnAdd.disabled = true;
@@ -57,6 +61,8 @@ btnEquals.disabled = true;
 
 disableBtns();
 
+/*function that takes three parameters and uses them in an operation under conditions,
+ that depend on the oper variable*/
 function operate(oper, a, b) {
   if (oper === "/") {
     divide(+a, +b);
@@ -70,12 +76,14 @@ function operate(oper, a, b) {
   }
 }
 
+//erasing the result on the display under a condition
 function eraseResult() {
   if (a === "" && oper === "" && b === "" && c === "") {
     display.textContent = "";
   }
 }
 
+//returning the calculator to default if the result is infinity
 function ifDivideByZero() {
   if (c === Infinity) {
     a = "";
@@ -86,6 +94,7 @@ function ifDivideByZero() {
   }
 }
 
+//displaying values one at a time
 function orderOfOperation() {
   if (
     display.textContent === "/" ||
@@ -97,6 +106,7 @@ function orderOfOperation() {
   }
 }
 
+//when called will enable some buttons exept the dot which depends on a condition
 function enableBtns() {
   btnDivide.disabled = false;
   btnAdd.disabled = false;
@@ -120,11 +130,14 @@ function enableBtns() {
   }
 }
 
+//displaying a message if dividing by zero
 function ifInfinity() {
   if (c === Infinity) {
     display.textContent = "No can do baby doll";
   }
 }
+
+//after clicking equals the next number click empties all values
 function emptyAfterEquals() {
   if (display.textContent == Number(c)) {
     a = "";
@@ -135,24 +148,26 @@ function emptyAfterEquals() {
   }
 }
 
-function onBtnClick(prvi, drugi) {
+/*when a number button is clicked update the a or b variable acording to the,
+argument that is being sent, all happening under some conditions*/
+function onBtnClick(firstNum, secondNum) {
   if (oper === "") {
-    a += prvi;
+    a += firstNum;
   } else if (c != "" || c === 0) {
-    a = c;
+    a = c; //when c exists or c is equal to zero c becomes the value of a
   }
   if (a === c) {
-    b = "";
-    c = "";
+    b = ""; //if the above else if statement is true empty the b and c variables
+    c = ""; //which leaves us with the operator and a new value of a for use in further operations
   }
   if (oper === "/" || oper === "-" || oper === "+" || oper === "*") {
-    b += drugi;
+    b += secondNum;
   }
-  console.log(a, oper, b, c);
 }
 
 display.textContent = "0";
 
+//calling functions defined above on click of a number button
 btnSeven.addEventListener("click", () => {
   eraseResult();
   ifDivideByZero();
@@ -183,6 +198,8 @@ btnNine.addEventListener("click", () => {
   display.textContent += 9;
 });
 
+/*calling the operate funcion under a condition, also calling some other ones
+and passing a value to the oper variable*/
 btnDivide.addEventListener("click", () => {
   if ((+a != "" && +b != "") || a === 0 || b === "0") {
     operate(oper, a, b);
@@ -282,6 +299,7 @@ btnSubtract.addEventListener("click", () => {
   btnErase.disabled = true;
 });
 
+//if the clear button is clicked empty all variables
 btnClear.addEventListener("click", () => {
   a = "";
   b = "";
@@ -306,6 +324,8 @@ btnZero.addEventListener("click", () => {
   }
 });
 
+/*if the equals button is clicked calculate the numbers, display result and,
+empty all variables exept c so we can continue to work with it*/
 btnEquals.addEventListener("click", () => {
   operate(oper, a, b);
   btnErase.disabled = true;
@@ -332,6 +352,9 @@ btnAdd.addEventListener("click", () => {
   btnErase.disabled = true;
 });
 
+/*we are adding a decimal point to the numbers that depend on some conditions,
+and each time we are going through the number in a loop checking if 
+a decimal point already exists. If it does disable the dot button*/
 btnDot.addEventListener("click", () => {
   if (oper === "") {
     a += ".";
@@ -352,6 +375,8 @@ btnDot.addEventListener("click", () => {
   display.textContent += ".";
 });
 
+/*when the erase button is clicked we are checking some conditions and depending on them
+remove the last digit of the number*/
 btnErase.addEventListener("click", () => {
   if (b === "" && a != "") {
     oper = oper.substring(0, oper.length - 1);
@@ -382,6 +407,7 @@ btnErase.addEventListener("click", () => {
   }
 });
 
+//add some basic keyboard support, doing the same things as on the mouse listeners above
 body.addEventListener(
   "keydown",
   (event) => {
